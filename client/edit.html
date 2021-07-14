@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Edit content</title>
+
+  <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="d-flex justify-content-center">
+    <ul class="nav container">
+      <li >
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="add.html">Add content</a>
+      </li>
+      <li class="active">
+        <a href="edit.html">Edit content</a>
+      </li>
+      <li>
+        <a href="delete.html">Delete content</a>
+      </li>
+    </ul>
+  </div>
+  <div class="container pt-5">
+    <div class="d-flex justify-content-between flex-wrap">
+      <div class="blocks flex-fill m-1">
+        <div class="p-4">
+          <h5 class="card-title">Edit an LP</h5>
+          <div class="form-group">
+            <label for="EditLPSelect">Select lp to edit</label>
+            <select name="artist_id" class="form-control" id="EditLPSelect" required>
+              <option disabled selected value> -- select an option -- </option>
+            </select>
+          </div>
+          <hr>
+          <form id="LPForm">
+            <fieldset>
+              <div class="form-group">
+                <label for="LPName">Name</label>
+                <input class="form-control" type="text" id="LPName" name="name" maxlength="255" required>
+              </div>
+              <div class="form-group">
+                <label for="ArtistSelect">Select artist</label>
+                <select name="artist_id" class="form-control" id="ArtistSelect" required>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="LPText">Example textarea</label>
+                <textarea class="form-control" id="LPText" rows="3" name="text" maxlength="1000" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="LPImageSelect">Select an available image</label>
+                <select name="image_id" class="form-control" id="LPImageSelect" required>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="blocks flex-fill">
+        <div class="p-4">
+          <h5 class="card-title">Edit an Artist</h5>
+          <div class="form-group">
+            <label for="EditArtistSelect">Select artist to edit</label>
+            <select name="artist_id" class="form-control" id="EditArtistSelect" required>
+              <option disabled selected value> -- select an option -- </option>
+            </select>
+          </div>
+          <hr>
+          <form id="ArtistForm">
+            <fieldset>
+              <div class="form-group">
+                <label for="ArtistName">Name</label>
+                <input class="form-control" type="text" id="ArtistName" name="name" maxlength="255" required>
+              </div>
+              <div class="form-group">
+                <label for="ArtistText">Example textarea</label>
+                <textarea class="form-control" id="ArtistText" rows="3" name="text" maxlength="1000" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="ArtistImageSelect">Select an available image</label>
+                <select name="image_id" class="form-control" id="ArtistImageSelect" required>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="blocks flex-fill m-1">
+        <div class="p-4">
+          <h5 class="card-title">Edit an Image</h5>
+          <div class="form-group">
+            <label for="ImageSelect">Select image to edit</label>
+            <select name="image_id" class="form-control" id="ImageSelect" required>
+              <option disabled selected value> -- select an option -- </option>
+            </select>
+          </div>
+          <hr>
+          <form id="imageForm" enctype="multipart/form-data">
+            <fieldset>
+              <div class="form-group">
+                <label for="imgUploadName">Name</label>
+                <input name="name" type="text" class="form-control" id="imgUploadName" maxlength="255" required>
+              </div>
+              <input type="hidden" id="imgUpload" name="content" value="">
+              <div class="form-group">
+                <button type="submit" name="submit" class="submit-btn">Submit</button>
+              </div>
+            </fieldset>
+            <p class="text-danger" id="errorMessage"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/global.js"></script>
+  <script src="js/edit.js"></script>
+</body>
+</html>

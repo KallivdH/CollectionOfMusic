@@ -1,0 +1,148 @@
+@startuml
+class ArtistModel {
+- Long id
+- String name
+- String text
+- List<LPModel> discography
+- ImageModel image
++ Long getId()
++ String getName()
++ void setName(String)
++ String getText()
++ void setText(String)
++ List<LPModel> getDiscography()
++ void setDiscography(List<LPModel>)
++ ImageModel getImage()
++ void setImage(ImageModel)
+}
+
+class LPService {
+- LPRepository lpRepository
+- ImageRepository imageRepository
+- ArtistRepository artistRepository
++ List<LPModel> getAllLPs()
++ LPModel getLPByID(Long)
++ void addLP(LPModel,Long,Long)
++ void updateLP(Long,LPModel,Long,Long)
++ void deleteLP(Long)
++ void updateLPs(List<LPModel>)
++ void deleteAllLPs()
++ Resource getLPImage(Long)
+}
+class ArtistService {
+- ArtistRepository artistRepository
+- ImageRepository imageRepository
++ List<ArtistModel> getAllArtists()
++ ArtistModel getArtistByID(Long)
++ void addArtist(ArtistModel,Long)
++ void updateArtist(Long,ArtistModel,Long)
++ void updateAllArtist(List<ArtistModel>)
++ void deleteArtist(Long)
++ Resource getArtistImg(Long)
++ void deleteAllArtists()
+}
+class LPModel {
+- Long id
+- String name
+- String text
+- ArtistModel artist
+- ImageModel image
++ Long getId()
++ String getName()
++ void setName(String)
++ ArtistModel getArtist()
++ void setArtist(ArtistModel)
++ String getText()
++ void setText(String)
++ ImageModel getImage()
++ void setImage(ImageModel)
++ String toString()
+}
+
+class LPController {
+- LPService lpService
++ List<LPModel> getAllLPs()
++ LPModel getLPByID(Long)
++ void addLP(LPModel,Long,Long)
++ void updateLP(Long,LPModel,Long,Long)
++ void updateLPs(List<LPModel>)
++ void deleteLP(Long)
++ void deleteAllLPs()
+}
+class ImageModel {
+- Long id
+- String name
+~ byte[] content
+- LPModel lpModel
+- ArtistModel artistModel
++ ArtistModel getArtistModel()
++ void setArtistModel(ArtistModel)
++ LPModel getLpModel()
++ void setLpModel(LPModel)
++ Long getId()
++ void setId(Long)
++ String getName()
++ void setName(String)
++ byte[] getContent()
++ void setContent(byte[])
+}
+class ImageController {
+- ImageService imageService
++ List<ImageModel> getAllImages()
++ List<ImageModel> getAllAvailableImages()
++ ImageModel getImageByID(Long)
++ void addImage(MultipartFile,String)
++ void updateImage(Long,ImageModel)
++ void updateAllImages(List<ImageModel>)
++ void deleteImage(Long)
++ void deleteAllImages()
+}
+interface LPRepository {
+}
+class ArtistController {
+- ArtistService artistService
++ List<ArtistModel> getAllArtists()
++ ArtistModel getArtistByID(Long)
++ void addArtist(ArtistModel,Long)
++ void updateArtist(Long,ArtistModel,Long)
++ void updateArtists(List<ArtistModel>)
++ void deleteArtist(Long)
++ void deleteAllArtists()
+}
+interface ImageRepository {
+}
+interface ArtistRepository {
+}
+class ImageService {
+- ImageRepository imageRepository
++ ImageModel getImageByID(Long)
++ void addImage(MultipartFile,String)
++ List<ImageModel> getAllImages()
++ void updateImage(Long,ImageModel)
++ void updateAllImages(List<ImageModel>)
++ void deleteImage(Long)
++ void deleteAllImages()
++ List<ImageModel> getAllAvailableImages()
+}
+
+ImageService o--> ImageController
+ImageService <-- ImageRepository
+
+LPService o--> LPController
+LPService <-- LPRepository
+
+ArtistService o--> ArtistController
+ArtistService <-- ArtistRepository
+
+ArtistService <-- ImageRepository
+LPService <-- ImageRepository
+LPService <-- ArtistRepository
+
+ArtistModel "1" --* "many" LPModel
+ArtistModel "1" --* "1" ImageModel
+LPModel "1" --* "1" ImageModel
+
+ImageModel --o ImageRepository
+LPModel --o LPRepository
+ArtistModel --o ArtistRepository
+@enduml

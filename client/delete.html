@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Delete content</title>
+
+  <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="d-flex justify-content-center">
+    <ul class="nav container">
+      <li >
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="add.html">Add content</a>
+      </li>
+      <li>
+        <a href="edit.html">Edit content</a>
+      </li>
+      <li class="active">
+        <a href="delete.html">Delete content</a>
+      </li>
+    </ul>
+  </div>
+  <div class="container pt-5">
+    <div class="d-flex justify-content-between flex-wrap">
+      <div class="blocks flex-fill m-1">
+        <div class="p-4">
+          <h5 class="card-title">Delete an LP</h5>
+          <p>The name behind the lp name is the artist name</p>
+          <form id="LPForm">
+            <fieldset>
+              <div class="form-group">
+                <label for="EditLPSelect">Select lp to edit</label>
+                <select name="delete_id" class="form-control" id="EditLPSelect" required>
+                  <option disabled selected value> -- select an option -- </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="blocks flex-fill">
+        <div class="p-4">
+          <h5 class="card-title">Delete an Artist</h5>
+          <p>Artist can only be deleted if its discography is empty</p>
+          <p>The number behind the artist name is the amount of lp's in its discography</p>
+          <form id="ArtistForm">
+            <fieldset>
+              <div class="form-group">
+                <label for="EditArtistSelect">Select artist to edit</label>
+                <select name="delete_id" class="form-control" id="EditArtistSelect" required>
+                  <option disabled selected value> -- select an option -- </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="submit-btn">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="blocks flex-fill m-1">
+        <div class="p-4">
+          <h5 class="card-title">Delete an Image</h5>
+          <p>Only images that aren't currently in use can be deleted</p>
+          <form id="imageForm" enctype="multipart/form-data">
+            <fieldset>
+              <div class="form-group">
+                <label for="ImageSelect">Select image to edit</label>
+                <select name="delete_id" class="form-control" id="ImageSelect" required>
+                  <option disabled selected value> -- select an option -- </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" name="submit" class="submit-btn">Submit</button>
+              </div>
+            </fieldset>
+            <p class="text-danger" id="errorMessage"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/global.js"></script>
+  <script src="js/delete.js"></script>
+</body>
+</html>
